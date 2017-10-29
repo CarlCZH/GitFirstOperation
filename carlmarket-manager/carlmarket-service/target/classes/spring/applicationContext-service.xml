@@ -15,7 +15,6 @@
 
 	<!-- spring创建service对象 用注解方式 -->
 	<context:component-scan base-package="com.hui.service" />
-	
 	<!-- 发布服务 -->
 	<dubbo:application name="carlmarket-manager"/>
 	<!-- 注册中心 -->
@@ -23,11 +22,7 @@
 	<!-- 使用dubbo协议进行暴露，端口20880 -->
 	<dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
 	<!-- 发布需要暴露的服务接口，ref引用的是接口的实现类名称，开头要小写 -->
-	<dubbo:service interface="com.hui.service.TbItemService" ref="tbItemServiceImpl" timeout="600000"/>
+	<dubbo:service interface="com.hui.service.ItemOperationService" ref="itemOperationServiceImpl" timeout="60000"></dubbo:service>
 	
-	<dubbo:service interface="com.hui.service.TbItemCatService" ref="tbItemCatServiceImpl" timeout="600000"/>
-	
-	<dubbo:service interface="com.hui.service.TbItemParamService" ref="tbItemParamServiceImpl" timeout="600000"/>
-
 
 </beans>

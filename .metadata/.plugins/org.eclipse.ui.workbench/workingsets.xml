@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1509198025007_0" label="carlmarket-manager" name="carlmarket-manager">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-manager" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-pojo" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-mapper" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-interface" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-pojo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-manager" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carlmarket-mapper" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1509199564910_1" label="Window Working Set" name="Aggregate for window 1509199564909"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1509203862061_2" label="Window Working Set" name="Aggregate for window 1509203862061"/>

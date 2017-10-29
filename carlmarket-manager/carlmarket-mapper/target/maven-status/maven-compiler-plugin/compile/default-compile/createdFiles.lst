@@ -1,11 +1,11 @@
-com\hui\mapper\TbOrderShippingMapper.class
-com\hui\mapper\TbUserMapper.class
 com\hui\mapper\TbItemParamItemMapper.class
+com\hui\mapper\TbOrderItemMapper.class
+com\hui\mapper\TbOrderShippingMapper.class
 com\hui\mapper\TbContentCategoryMapper.class
-com\hui\mapper\TbItemCatMapper.class
 com\hui\mapper\TbItemMapper.class
 com\hui\mapper\TbContentMapper.class
 com\hui\mapper\TbItemDescMapper.class
-com\hui\mapper\TbItemParamMapper.class
-com\hui\mapper\TbOrderItemMapper.class
+com\hui\mapper\TbUserMapper.class
+com\hui\mapper\TbItemCatMapper.class
 com\hui\mapper\TbOrderMapper.class
+com\hui\mapper\TbItemParamMapper.class
