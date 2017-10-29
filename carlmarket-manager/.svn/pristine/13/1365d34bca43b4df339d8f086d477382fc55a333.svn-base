@@ -1,0 +1,14 @@
+package com.hui.service;
+
+import com.hui.common.pojo.EasyUIDatagridResult;
+import com.hui.common.utils.TaotaoResult;
+import com.hui.pojo.TbItem;
+
+public interface TbItemService {
+	
+	//查询所有商品
+	public EasyUIDatagridResult findItems(Integer page,Integer rows);
+	
+	//添加商品
+	public TaotaoResult addItem(TbItem tbItem,String desc);
+}

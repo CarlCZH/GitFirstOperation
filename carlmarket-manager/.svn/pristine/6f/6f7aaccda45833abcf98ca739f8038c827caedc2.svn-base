@@ -1,0 +1,21 @@
+package com.hui.service;
+
+import com.hui.common.pojo.EasyUIDatagridResult;
+import com.hui.common.utils.TaotaoResult;
+import com.hui.pojo.TbItem;
+import com.hui.pojo.TbItemDesc;
+
+public interface TbItemService {
+	
+	//查询所有商品
+	public EasyUIDatagridResult findItems(Integer page,Integer rows);
+	
+	//添加商品
+	public TaotaoResult addItem(TbItem tbItem,String desc,String itemParams);
+	
+	//根据商品id查询商品
+	public TbItem findItemByItemId(Long ItemId);
+	
+	//根据商品id查询商品详细内容区域
+	public TbItemDesc findDescByItemId(Long ItemId);
+}

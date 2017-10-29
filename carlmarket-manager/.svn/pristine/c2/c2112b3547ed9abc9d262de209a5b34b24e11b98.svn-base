@@ -1,0 +1,47 @@
+package com.hui.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hui.common.pojo.EasyUIDatagridResult;
+import com.hui.mapper.TbItemMapper;
+import com.hui.pojo.TbItem;
+import com.hui.pojo.TbItemExample;
+import com.hui.service.TbItemService;
+
+@Service
+public class TbItemServiceImpl implements TbItemService{
+	
+	@Autowired
+	private TbItemMapper tbItemMapper;
+
+	@Override
+	public EasyUIDatagridResult findItems(Integer page, Integer rows) {
+		
+		TbItemExample example = new TbItemExample();
+		
+		//在查询之前用pagehelper包中方法进行分页装载
+		PageHelper.startPage(page, rows);
+		
+		//查询所有
+		List<TbItem> selectByExample = tbItemMapper.selectByExample(example);
+		
+		EasyUIDatagridResult result = new EasyUIDatagridResult();
+		//以下是将数据封装进EasyUIDatagridResult中
+		result.setRows(selectByExample);
+		//统计数据库中这个表总共有多少条数据
+		PageInfo<TbItem> pageInfo = new PageInfo<>(selectByExample);
+		long total = pageInfo.getTotal();
+		
+		result.setTotal(total);
+		
+		return result;
+	}
+	
+	 
+	
+}

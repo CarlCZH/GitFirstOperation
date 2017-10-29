@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        	http://www.springframework.org/schema/mvc 
+        	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        	http://code.alibabatech.com/schema/dubbo 
+        	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        	http://www.springframework.org/schema/context 
+        	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+        	
+    <!-- 读取配置文件内容 -->
+    <context:property-placeholder location="classpath:conf/resource.properties"/>   
+        
+	<!-- 扫描web包 -->
+    <context:component-scan base-package="com.hui.web" />
+    
+    <!-- 配置映射器与适配器,用注解方式-->
+    <mvc:annotation-driven />
+    
+    <!-- 配置多媒体解析器 -->
+    <!-- 这个是要配置id属性的，不要忘了；id值是multipartResolver，固定 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<!-- 设置默认编码 -->
+    	<property name="defaultEncoding" value="UTF-8"></property>
+    	<!-- 设置最大上传文件大小 -->
+    	<property name="maxUploadSize" value="5242880"></property>
+    </bean>
+    
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <!-- 资源映射 ;相当于过滤一些资源，这些资源不需要通过前端控制器（调度中心）-->
+    <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+    
+    <!-- 引用服务 -->
+    <!-- 指明哪个要引用 -->
+    <dubbo:application name="carlmarket-web"/>
+    <!-- 注册中心 -->
+    <dubbo:registry address="192.168.25.128:2181" protocol="zookeeper"></dubbo:registry>
+    <!-- 引用服务，这里是id属性，其值必须是对应controller中引用service接口的名称 -->
+    <dubbo:reference interface="com.hui.service.TbItemService" id="tbItemService"></dubbo:reference>
+    
+    <dubbo:reference interface="com.hui.service.TbItemCatService" id="tbItemCatService"></dubbo:reference>
+    
+  
+</beans>

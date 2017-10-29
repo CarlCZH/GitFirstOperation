@@ -1,0 +1,24 @@
+package com.hui.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class IndexPageController {
+
+	//进入主界面
+	@RequestMapping("/")
+	public String indexPage() {
+		
+		return "index";
+	}
+	
+	
+	//根据点击跳转界面
+	@RequestMapping("/{path}")
+	public String dataPage(@PathVariable String path) {
+		return path;
+	}
+	
+}

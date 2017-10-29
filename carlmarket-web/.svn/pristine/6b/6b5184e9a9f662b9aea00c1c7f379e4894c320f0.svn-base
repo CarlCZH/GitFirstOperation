@@ -1,0 +1,32 @@
+package com.hui.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.hui.common.pojo.EasyUITreeNode;
+import com.hui.service.TbItemCatService;
+
+@Controller
+@RequestMapping("/item/cat")
+public class TreeNodeController {
+
+	@Autowired
+	private TbItemCatService tbItemCatService;
+	
+	@RequestMapping("/list")
+	@ResponseBody							
+	//当参数名字与前端传过来的值不一致的时候，要用@RequestParam注解中的那么进行指定，另外defaultValue是设置默认值的		
+	public List<EasyUITreeNode> findTreeList(@RequestParam(name="id",defaultValue="0") Long parentId){
+		
+		List<EasyUITreeNode> findTreeNode = tbItemCatService.findTreeNode(parentId);
+		
+		return findTreeNode;
+		
+	}
+	
+}

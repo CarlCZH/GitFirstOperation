@@ -1,0 +1,9 @@
+package com.hui.service;
+
+import com.hui.common.pojo.EasyUIDatagridResult;
+
+public interface TbItemService {
+
+	public EasyUIDatagridResult findItems(Integer page,Integer rows);
+	
+}

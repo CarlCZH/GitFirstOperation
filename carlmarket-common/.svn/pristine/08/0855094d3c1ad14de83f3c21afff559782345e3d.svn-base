@@ -1,0 +1,38 @@
+package com.hui.common.pojo;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class SearchItem implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private Long totalPages; 			// 总共商品的页数
+	private Long recourdCount; 			// 总共商品的数量
+	private List<ItemContent> itemList; // 当前页显示的商品
+
+	public Long getTotalPages() {
+		return totalPages;
+	}
+
+	public void setTotalPages(Long totalPages) {
+		this.totalPages = totalPages;
+	}
+
+	public Long getRecourdCount() {
+		return recourdCount;
+	}
+
+	public void setRecourdCount(Long recourdCount) {
+		this.recourdCount = recourdCount;
+	}
+
+	public List<ItemContent> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<ItemContent> itemList) {
+		this.itemList = itemList;
+	}
+
+}

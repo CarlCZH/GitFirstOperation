@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;carlmarket-common&apos;&#x0D;&#x0A;- Original project: &apos;carlmarket-common&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.hui.common.pojo.EasyUIDatagridResult.java&#x0D;&#x0A;     com.hui.common.pojo.EasyUITreeNode.java&#x0D;&#x0A;     com.hui.common.pojo.ItemContent.java&#x0D;&#x0A;     com.hui.common.pojo.SearchItem.java" description="Delete elements" element1="/src\/main\/java&lt;com.hui.common.pojo{EasyUIDatagridResult.java" element2="/src\/main\/java&lt;com.hui.common.pojo{SearchItem.java" element3="/src\/main\/java&lt;com.hui.common.pojo{EasyUITreeNode.java" element4="/src\/main\/java&lt;com.hui.common.pojo{ItemContent.java" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1509203546222" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,20 @@
+package com.hui.service;
+
+import com.hui.common.pojo.EasyUIDatagridResult;
+import com.hui.common.utils.TaotaoResult;
+
+public interface TbItemParamService {
+
+	//查询所有item_param
+	EasyUIDatagridResult findAllItemParamDatas(Integer page,Integer rows);
+	
+	//根据itemId来查询paramData
+	TaotaoResult findParamByItemCatId(Long itemId);
+	
+	//添加规格参数模板
+	TaotaoResult addItemParam(Long id,String paramData);
+	
+	//根据id删除规格参数模板
+	TaotaoResult deleteItemParam(Long[] ids);
+	
+}

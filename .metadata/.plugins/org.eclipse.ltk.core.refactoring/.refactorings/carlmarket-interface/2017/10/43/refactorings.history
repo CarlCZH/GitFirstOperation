@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;carlmarket-interface&apos;&#x0D;&#x0A;- Original project: &apos;carlmarket-interface&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.hui.service.TbItemCatService.java&#x0D;&#x0A;     com.hui.service.TbItemParamService.java&#x0D;&#x0A;     com.hui.service.TbItemService.java" description="Delete elements" element1="/src\/main\/java&lt;com.hui.service{TbItemCatService.java" element2="/src\/main\/java&lt;com.hui.service{TbItemParamService.java" element3="/src\/main\/java&lt;com.hui.service{TbItemService.java" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1509203560079" subPackages="false" version="1.0"/>
+</session>

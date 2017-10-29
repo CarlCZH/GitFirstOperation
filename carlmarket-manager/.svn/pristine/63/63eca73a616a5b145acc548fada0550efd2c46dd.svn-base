@@ -1,0 +1,105 @@
+package com.hui.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hui.common.pojo.EasyUIDatagridResult;
+import com.hui.common.utils.TaotaoResult;
+import com.hui.mapper.TbItemParamMapper;
+import com.hui.pojo.TbItemParam;
+import com.hui.pojo.TbItemParamExample;
+import com.hui.pojo.TbItemParamExample.Criteria;
+import com.hui.service.TbItemParamService;
+
+@Service
+public class TbItemParamServiceImpl implements TbItemParamService {
+
+	@Autowired
+	private TbItemParamMapper tbItemParamMapper;
+	
+	//根据itemId来查询paramData
+	@Override
+	public TaotaoResult findParamByItemCatId(Long itemId) {
+		
+		//将itemId封装进example
+		TbItemParamExample example = new TbItemParamExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andItemCatIdEqualTo(itemId);
+		//查询
+		List<TbItemParam> selectByExampleWithBLOBs = tbItemParamMapper.selectByExampleWithBLOBs(example);
+		//判断是否有值，对其进行相对应的返回值
+		if (selectByExampleWithBLOBs!=null&&selectByExampleWithBLOBs.size()>0) {
+			return TaotaoResult.ok(selectByExampleWithBLOBs.get(0));
+		}
+		
+		return TaotaoResult.ok();
+	}
+
+	//查询所有item_param
+	@Override
+	public EasyUIDatagridResult findAllItemParamDatas(Integer page,Integer rows) {
+		
+		TbItemParamExample example = new TbItemParamExample();
+		
+		//PageHelper进行分页处理
+		PageHelper.startPage(page, rows);
+		//查询
+		List<TbItemParam> selectByExample = tbItemParamMapper.selectByExample(example);
+		List<TbItemParam> selectByExampleWithBLOBs = tbItemParamMapper.selectByExampleWithBLOBs(example);
+		//将selectByExampleWithBLOBs中的param_data属性对应赋值到selectByExample中
+		for(int i =0;i<selectByExample.size();i++) {
+			for(int j = i;j<=i;j++) {
+				selectByExample.get(i).setParamData(selectByExampleWithBLOBs.get(j).getParamData());
+			}
+		}
+		
+		//PageInfo得到数据总数
+		PageInfo<TbItemParam> info = new PageInfo<>(selectByExample);
+		long total = info.getTotal();
+		
+		//封装EasyUIDatagridResult
+		EasyUIDatagridResult result = new EasyUIDatagridResult();
+		result.setTotal(total);
+		result.setRows(selectByExample);
+		
+		return result;
+	}
+
+	//添加规格参数模板
+	@Override
+	public TaotaoResult addItemParam(Long id, String paramData) {
+		//封装TbItemParam
+		TbItemParam tbItemParam = new TbItemParam();
+		tbItemParam.setItemCatId(id);
+		tbItemParam.setParamData(paramData);
+		tbItemParam.setCreated(new Date());
+		tbItemParam.setUpdated(new Date());
+		
+		int insert = tbItemParamMapper.insert(tbItemParam );
+		if (insert<=0) {
+			throw new RuntimeException();	
+		}
+		
+		return TaotaoResult.ok();
+	}
+
+	//根据id删除规格参数模板
+	@Override
+	public TaotaoResult deleteItemParam(Long[] ids) {
+		
+		for (Long id : ids) {
+			int key = tbItemParamMapper.deleteByPrimaryKey(id);
+			if (key<=0) {
+				throw new RuntimeException();
+			}
+		}
+		return TaotaoResult.ok();
+		
+	}
+
+}

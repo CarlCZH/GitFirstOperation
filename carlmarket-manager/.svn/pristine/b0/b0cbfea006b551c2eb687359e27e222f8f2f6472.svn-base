@@ -1,0 +1,9 @@
+package com.hui.service;
+
+import com.hui.pojo.TbItem;
+
+public interface TbItemService {
+
+	public TbItem findById(long id);
+	
+}

@@ -1,0 +1,24 @@
+package com.hui.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hui.mapper.TbItemMapper;
+import com.hui.pojo.TbItem;
+import com.hui.service.TbItemService;
+
+@Service
+public class TbItemServiceImpl implements TbItemService {
+
+	@Autowired
+	private TbItemMapper itemlMapper;
+	
+	@Override
+	public TbItem findById(long id) {
+		
+		TbItem tbItem = itemlMapper.selectByPrimaryKey(id);
+		
+		return tbItem;
+	}
+
+}

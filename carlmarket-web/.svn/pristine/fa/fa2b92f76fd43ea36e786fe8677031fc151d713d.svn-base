@@ -1,0 +1,18 @@
+package com.hui.fastdfs;
+
+import org.junit.Test;
+
+public class LeiTest {
+
+	@Test
+	public void test1() {
+		byte b1=2,b2=3,b3,b4;
+		
+		final byte b5=5,b6=6;
+		
+		b4 = b5+b6;
+		
+		
+	}
+	
+}

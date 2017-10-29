@@ -1,0 +1,58 @@
+package com.hui.web;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.dubbo.remoting.exchange.Request;
+import com.hui.common.pojo.EasyUITreeNode;
+import com.hui.common.utils.TaotaoResult;
+import com.hui.content.service.ContentCategoryService;
+
+@Controller
+@RequestMapping("/content/category")
+public class ContentCategoryController {
+
+	@Autowired
+	private ContentCategoryService contentCategoryService;
+	
+	//根据parentId查询内容分类
+	@RequestMapping("/list")
+	@ResponseBody
+	public List<EasyUITreeNode> findContentTreeList(@RequestParam(name="id",defaultValue="0") Long parentId){
+		
+		List<EasyUITreeNode> nodes = contentCategoryService.findContentTreeNode(parentId);
+		
+		return nodes;
+	}
+	
+	//新增内容分类
+	@RequestMapping(value="/create",method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult addContent(Long parentId,String name) {
+		
+		return contentCategoryService.addContentCategory(parentId, name);
+	}
+	
+	//修改内容分类名称
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updateName(Long id,String name) {
+		
+		contentCategoryService.updateCategoryName(id, name);
+		return "forward:/list";
+	}
+	
+	//删除内容分类
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public String deleteCategory(Long parentId,Long id) {
+		contentCategoryService.deleteContentCategory(parentId, id);
+		
+		return "forward:/list";
+	}
+	
+}
